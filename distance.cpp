@@ -5,13 +5,16 @@ VL53L0X sensor;
 uint8_t _blur;
 uint16_t old_height;
 
+uint16_t valid_measurements = 0;
+uint16_t invalid_measurements = 0;
+
 uint8_t init_distance () {
   return init_distance(/*long_range*/ true, /*high_speed*/ false, /*high_accuracy*/ true, 15);
 }
 
 uint8_t init_distance (bool long_range, bool high_speed, bool high_accuracy, uint8_t blur) {
   _blur = blur;
-  
+
   if (high_speed && high_accuracy)
     return 2; /* invalid parameter combination */
 
@@ -48,11 +51,18 @@ int getHeight() {
   if (sensor.timeoutOccurred() || measured_height > 8190) { // here an invalid value should be returned
     measured_height = old_height;
     Serial.print(" invalid measurement");
+    invalid_measurements++;
+  } else {
+    valid_measurements++;
   }
-  
+
   if (abs(measured_height - old_height) < _blur) {
     measured_height = old_height;
   }
 
   return (int) measured_height / 10;
+}
+
+float getSensorQuality() {
+  return valid_measurements / (valid_measurements + invalid_measurements);
 }

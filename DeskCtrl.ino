@@ -20,6 +20,6 @@ void setup() {
 }
 
 void loop() {
-  Serial.print("Distance: ");Serial.print(getHeight());Serial.println("cm");
+  Serial.print("Distance: ");Serial.print(getHeight());Serial.print("cm; Qualtiy: ");Serial.println(getSensorQuality());
   delay(1000);
 }
