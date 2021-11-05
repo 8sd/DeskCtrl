@@ -1,5 +1,6 @@
 #include "distance.h"
 #include "OTA.h"
+#include "rest.h"
 #include "wifi.h"
 
 void reboot() {
@@ -40,6 +41,10 @@ void setup() {
   init_ota();
   Serial.println(" OTA initialized");
   
+  Serial.println(" Initializing rest");
+  init_rest();
+  Serial.println(" rest initialized");
+  
   Serial.println("Booted!");
 }
 
@@ -48,4 +53,5 @@ void loop() {
   delay(1000);
 
   run_ota();
+  run_rest();
 }
