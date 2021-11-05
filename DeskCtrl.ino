@@ -1,4 +1,5 @@
 #include "distance.h"
+#include "wifi.h"
 
 void setup() {
   Serial.begin(115200);
@@ -6,6 +7,7 @@ void setup() {
   Serial.println();
   Serial.println();
   Serial.flush();
+  
   Serial.println("Booting...");
   Serial.println(" Initializing distance sensor");
   switch (init_distance()) {
@@ -16,6 +18,16 @@ void setup() {
       while (1){}
   }
   Serial.println(" Distance sensor initialized");
+  
+  Serial.print(" Connecting Wifi...");
+  switch(init_wifi ()) {
+    case 0:
+      break;
+    default:
+      Serial.println(" Error initializing wifi");
+      while (1){}
+  }
+  Serial.println(" Wifi connected!");
   Serial.println("Booted!");
 }
 
