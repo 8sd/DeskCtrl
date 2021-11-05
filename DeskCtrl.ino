@@ -1,3 +1,4 @@
+#include "desk_logic.h"
 #include "distance.h"
 #include "OTA.h"
 #include "rest.h"
@@ -49,9 +50,11 @@ void setup() {
 }
 
 void loop() {
-  Serial.print("Distance: "); Serial.print(getHeight()); Serial.print("cm; Qualtiy: "); Serial.println(getSensorQuality());
+  Serial.print("Distance: "); Serial.print(getHeight()); Serial.print("cm; Direction: "); Serial.print(getDirectionStr()); Serial.print("; Target: "); Serial.print(getTarget()); Serial.print("cm; Qualtiy: "); Serial.println(getSensorQuality());
   delay(1000);
 
+  /*TODO: Multi Threading*/
   run_ota();
   run_rest();
+  run_desk();
 }
