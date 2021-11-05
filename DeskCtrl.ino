@@ -1,4 +1,5 @@
 #include "distance.h"
+#include "OTA.h"
 #include "wifi.h"
 
 void reboot() {
@@ -34,10 +35,17 @@ void setup() {
       reboot();
   }
   Serial.println(" Wifi connected!");
+  
+  Serial.println(" Initializing OTA");
+  init_ota();
+  Serial.println(" OTA initialized");
+  
   Serial.println("Booted!");
 }
 
 void loop() {
   Serial.print("Distance: "); Serial.print(getHeight()); Serial.print("cm; Qualtiy: "); Serial.println(getSensorQuality());
   delay(1000);
+
+  run_ota();
 }
