@@ -8,8 +8,12 @@ extern int target_up;
 extern int target_down;
 extern int target;
 int get_target ();
+void set_target (int t);
+void set_target_up (int t);
+void set_target_down (int t);
 
 extern int buffer; /*blur to avoid the desk going up and down missing the exact height*/
+void set_buffer (int b);
 
 #define UP 1
 #define DOWN -1

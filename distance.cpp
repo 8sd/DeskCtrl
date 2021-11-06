@@ -67,7 +67,14 @@ float get_sensor_quality() {
   return valid_measurements / (valid_measurements + invalid_measurements);
 }
 
-
 uint8_t get_blur() {
   return _blur;
+}
+
+void set_blur(uint8_t b) {
+  if (b < 0) {
+    _blur = 0;
+  } else {
+    _blur = b;
+  }
 }

@@ -8,7 +8,35 @@ int get_target () {
   return target;
 }
 
+int convert_to_target_value (int t) {
+  if (t > 122)
+    return 122;
+  else if (t < 60)
+    return 60;
+  else
+    return t;
+}
+
+void set_target (int t) {
+  target = convert_to_target_value(t);
+}
+
+void set_target_up (int t) {
+  target_up = convert_to_target_value(t);
+}
+
+void set_target_down (int t) {
+  target_down = convert_to_target_value(t);
+}
+
 int buffer = 2;
+void set_buffer (int b) {
+  if (b < 0) {
+    buffer = 0;
+  } else {
+    buffer = b;
+  }
+}
 
 int getDirection () {
   int height = get_height();
