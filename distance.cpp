@@ -45,7 +45,7 @@ uint8_t init_distance (bool long_range, bool high_speed, bool high_accuracy, uin
   return 0;
 }
 
-int getHeight() {
+int get_height() {
   int measured_height = sensor.readRangeSingleMillimeters();
 
   if (sensor.timeoutOccurred() || measured_height > 8190) { // here an invalid value should be returned
@@ -63,6 +63,11 @@ int getHeight() {
   return (int) measured_height / 10;
 }
 
-float getSensorQuality() {
+float get_sensor_quality() {
   return valid_measurements / (valid_measurements + invalid_measurements);
+}
+
+
+uint8_t get_blur() {
+  return _blur;
 }

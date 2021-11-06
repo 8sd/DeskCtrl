@@ -4,14 +4,14 @@ int target_up = 115;
 int target_down = 74;
 int target = target_up;
 
-int getTarget () {
+int get_target () {
   return target;
 }
 
 int buffer = 2;
 
 int getDirection () {
-  int height = getHeight();
+  int height = get_height();
   if (height - buffer > target)
     return DOWN;
   else if (height + buffer < target)
@@ -20,8 +20,8 @@ int getDirection () {
     return NONE;
 }
 
-String getDirectionStr () {
-  switch(getDirection ()) {
+String get_direction_str () {
+  switch (getDirection ()) {
     case UP:
       return String("up");
     case DOWN:
@@ -34,7 +34,7 @@ String getDirectionStr () {
 }
 
 void run_desk() {
-  switch(getDirection ()) {
+  switch (getDirection ()) {
     case UP:
       Serial.println("up");
       break;

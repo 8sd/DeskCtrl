@@ -43,6 +43,6 @@ void init_ota () {
   ArduinoOTA.begin();
 }
 
-void run_ota () {  
+void run_ota () {
   ArduinoOTA.handle();
 }

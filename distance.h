@@ -10,7 +10,8 @@ extern VL53L0X sensor;
 uint8_t init_distance ();
 uint8_t init_distance (bool long_range, bool high_speed, bool high_accuracy, uint8_t blur);
 
-int getHeight();
-float getSensorQuality();
+int get_height();
+float get_sensor_quality();
+uint8_t get_blur();
 
 #endif //Distance_h

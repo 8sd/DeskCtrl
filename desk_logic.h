@@ -7,7 +7,7 @@
 extern int target_up;
 extern int target_down;
 extern int target;
-int getTarget ();
+int get_target ();
 
 extern int buffer; /*blur to avoid the desk going up and down missing the exact height*/
 
@@ -16,7 +16,7 @@ extern int buffer; /*blur to avoid the desk going up and down missing the exact 
 #define NONE 0
 
 int getDirection ();
-String getDirectionStr ();
+String get_direction_str ();
 
 void run_desk();
 

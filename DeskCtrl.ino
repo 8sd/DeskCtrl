@@ -4,6 +4,10 @@
 #include "rest.h"
 #include "wifi.h"
 
+void run_serial () {
+  Serial.print("Distance: "); Serial.print(get_height()); Serial.print("cm; Direction: "); Serial.print(get_direction_str()); Serial.print("; Target: "); Serial.print(get_target()); Serial.print("cm; Qualtiy: "); Serial.println(get_sensor_quality());
+}
+
 void reboot() {
   Serial.println("Rebooting...");
   delay(5000);
@@ -37,24 +41,23 @@ void setup() {
       reboot();
   }
   Serial.println(" Wifi connected!");
-  
+
   Serial.println(" Initializing OTA");
   init_ota();
   Serial.println(" OTA initialized");
-  
+
   Serial.println(" Initializing rest");
   init_rest();
   Serial.println(" rest initialized");
-  
+  /*TODO: Multi Threading*/
+
   Serial.println("Booted!");
 }
 
 void loop() {
-  Serial.print("Distance: "); Serial.print(getHeight()); Serial.print("cm; Direction: "); Serial.print(getDirectionStr()); Serial.print("; Target: "); Serial.print(getTarget()); Serial.print("cm; Qualtiy: "); Serial.println(getSensorQuality());
-  delay(1000);
-
-  /*TODO: Multi Threading*/
+  run_desk();
+  run_serial();
   run_ota();
   run_rest();
-  run_desk();
+  delay(100);
 }

@@ -4,6 +4,7 @@
 #include "Arduino.h"
 #include <WebServer.h>
 
+#include "desk_logic.h"
 #include "distance.h"
 
 void init_rest ();
