@@ -3,8 +3,8 @@
 
 #include "Arduino.h"
 
-#define PIN_UP 2
-#define PIN_DOWN 4
+#define PIN_UP 18
+#define PIN_DOWN 19
 
 void init_desk_ctrl();
 
