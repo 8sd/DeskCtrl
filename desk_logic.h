@@ -2,6 +2,7 @@
 #define Desk_Logic_h
 
 #include "Arduino.h"
+#include "desk_ctrl.h"
 #include "distance.h"
 
 extern int target_up;
@@ -22,7 +23,9 @@ void set_buffer (int b);
 int getDirection ();
 String get_direction_str ();
 
+void init_desk();
 void run_desk();
 void reset_desk();
+void stop_desk();
 
 #endif //Desk_Logic_h

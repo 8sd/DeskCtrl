@@ -49,6 +49,10 @@ void setup() {
   Serial.println(" Initializing rest");
   init_rest();
   Serial.println(" rest initialized");
+
+  Serial.println(" Initializing desk");
+  init_desk();
+  Serial.println(" desk initialized");
   /*TODO: Multi Threading*/
 
   Serial.println("Booted!");

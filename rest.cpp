@@ -35,7 +35,7 @@ void setValue() {
     else if (server.argName(i) == "target") {
       set_target(server.arg(i).toInt());
     }
-    else if (server.argName(i) == "buffer") {
+    else if (server.argName(i) == "buffer") { /*TODO: set function*/
       int val = server.arg(i).toInt();
       if (val > 0) {
         buffer = val;
@@ -61,6 +61,27 @@ void setValue() {
   server.send(200, "text/plain", getStatusStr());
 }
 
+void setTargetUp() {
+  set_target(target_up);
+  server.send(200, "text/plain", getStatusStr());
+}
+
+void setTargetDown() {
+  set_target(target_down);
+  server.send(200, "text/plain", getStatusStr());
+}
+
+void toggleHeight() {
+  set_target(target == target_down ? target_up : target_down);
+  server.send(200, "text/plain", getStatusStr());
+}
+
+void _stop() {
+  stop_desk();
+  server.send(200, "text/plain", getStatusStr());
+}
+
+
 void reset() {
   server.send(200, "text/plain", getStatusStr() + String("\n Resetting... please wait"));
   reset_desk();
@@ -70,8 +91,14 @@ void init_rest () {
   server.on("/getStatus", getStatus);
   
   server.on("/reset", reset);
+  server.on("/stop", _stop);
   
   server.on("/setValue", setValue);
+  server.on("/setTargetUp", setTargetUp);
+  server.on("/setTargetDown", setTargetDown);
+  
+  server.on("/toggleHeight", toggleHeight);
+  
   server.begin();
 }
 

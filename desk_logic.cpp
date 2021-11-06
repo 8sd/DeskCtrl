@@ -22,7 +22,7 @@ int convert_to_target_value (int t) {
 void set_target (int t) {
   target = convert_to_target_value(t);
 
-  bool stopped = false;
+  stopped = false;
 }
 
 void set_target_up (int t) {
@@ -44,10 +44,10 @@ void set_buffer (int b) {
 
 int getDirection () {
   int height = get_height();
-  
+
   if (stopped)
     return NONE;
-    
+
   if (height - buffer > target)
     return DOWN;
   else if (height + buffer < target)
@@ -74,22 +74,18 @@ String get_direction_str () {
 void run_desk() {
   switch (getDirection ()) {
     case UP:
-      Serial.println("up");
+      moveUp ();
       break;
     case DOWN:
-      Serial.println("down");
-      break;
-    case NONE:
-      Serial.println("none");
+      moveDown ();
       break;
     default:
-      Serial.println("unknown");
+      halt ();
       break;
   }
 }
 
 void reset_desk () {
-  
   //moveDown();
 
   for (int i = 0; i < 120; i++) { //Maximal 60 sec runter fahren
@@ -106,4 +102,12 @@ void reset_desk () {
   delay (1000);
   //halt();
   stopped = true;
+}
+
+void stop_desk () {
+  stopped = true;
+}
+
+void init_desk() {
+  init_desk_ctrl();
 }
