@@ -87,3 +87,23 @@ void run_desk() {
       break;
   }
 }
+
+void reset_desk () {
+  
+  //moveDown();
+
+  for (int i = 0; i < 120; i++) { //Maximal 60 sec runter fahren
+    int h = get_height();
+
+    if (h < 65) { // Tisch ist fast unten
+      delay(5000);
+      break;
+    }
+    delay (500);
+  }
+
+  //moveUp();
+  delay (1000);
+  //halt();
+  stopped = true;
+}

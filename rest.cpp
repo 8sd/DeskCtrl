@@ -61,8 +61,17 @@ void setValue() {
   server.send(200, "text/plain", getStatusStr());
 }
 
+void reset() {
+  server.send(200, "text/plain", getStatusStr() + String("\n Resetting... please wait"));
+  reset_desk();
+}
+
 void init_rest () {
   server.on("/getStatus", getStatus);
+  
+  server.on("/reset", reset);
+  
+  server.on("/setValue", setValue);
   server.begin();
 }
 

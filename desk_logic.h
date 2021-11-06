@@ -23,5 +23,6 @@ int getDirection ();
 String get_direction_str ();
 
 void run_desk();
+void reset_desk();
 
 #endif //Desk_Logic_h
