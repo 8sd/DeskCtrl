@@ -4,6 +4,8 @@ int target_up = 115;
 int target_down = 74;
 int target = target_up;
 
+bool stopped = true;
+
 int get_target () {
   return target;
 }
@@ -19,6 +21,8 @@ int convert_to_target_value (int t) {
 
 void set_target (int t) {
   target = convert_to_target_value(t);
+
+  bool stopped = false;
 }
 
 void set_target_up (int t) {
@@ -40,12 +44,18 @@ void set_buffer (int b) {
 
 int getDirection () {
   int height = get_height();
+  
+  if (stopped)
+    return NONE;
+    
   if (height - buffer > target)
     return DOWN;
   else if (height + buffer < target)
     return UP;
-  else
+  else {
+    stopped = true;
     return NONE;
+  }
 }
 
 String get_direction_str () {
